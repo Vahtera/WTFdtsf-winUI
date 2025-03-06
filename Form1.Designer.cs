@@ -41,6 +41,7 @@
             btnNewTurn = new Button();
             btnEndTurn = new Button();
             btnReroll = new Button();
+            btnAbout = new Button();
             groupBox2.SuspendLayout();
             gboxResults.SuspendLayout();
             SuspendLayout();
@@ -167,12 +168,23 @@
             btnReroll.UseVisualStyleBackColor = true;
             btnReroll.Click += bteReroll_Click;
             // 
+            // btnAbout
+            // 
+            btnAbout.Location = new Point(279, 162);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(75, 23);
+            btnAbout.TabIndex = 9;
+            btnAbout.Text = "About";
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(729, 461);
+            Controls.Add(btnAbout);
             Controls.Add(btnReroll);
             Controls.Add(btnEndTurn);
             Controls.Add(btnNewTurn);
@@ -202,5 +214,6 @@
         private Button btnEndTurn;
         private ListBox listBoxResults;
         private Button btnReroll;
+        private Button btnAbout;
     }
 }
