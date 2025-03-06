@@ -85,7 +85,7 @@ namespace WTFdtsf_winUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Size = new Size(814, 230);
+            Size = new Size(745, 230);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace WTFdtsf_winUI
 
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
-            Size = new Size(814, 500);
+            Size = new Size(745, 500);
             btnSubmit.Enabled = false;
             txtPlayerInput.Enabled = false;
             lblTurnDisplay.Text = "---";
@@ -120,7 +120,7 @@ namespace WTFdtsf_winUI
 
         private void btnNewTurn_Click(object sender, EventArgs e)
         {
-            Size = new Size(814, 230);
+            Size = new Size(745, 230);
             numPlayer = 1;
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnSubmit.Enabled = true;

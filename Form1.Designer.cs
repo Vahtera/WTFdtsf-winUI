@@ -53,7 +53,7 @@
             groupBox2.Controls.Add(txtPlayerInput);
             groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(776, 144);
+            groupBox2.Size = new Size(706, 144);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             // 
@@ -70,9 +70,9 @@
             // lblAcronymDisplay
             // 
             lblAcronymDisplay.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAcronymDisplay.Location = new Point(43, 19);
+            lblAcronymDisplay.Location = new Point(6, 19);
             lblAcronymDisplay.Name = "lblAcronymDisplay";
-            lblAcronymDisplay.Size = new Size(687, 65);
+            lblAcronymDisplay.Size = new Size(694, 65);
             lblAcronymDisplay.TabIndex = 0;
             lblAcronymDisplay.Text = "A B C D E F ThisIsALongWord";
             lblAcronymDisplay.TextAlign = ContentAlignment.MiddleCenter;
@@ -81,7 +81,7 @@
             // 
             lblTurnDisplay.AutoSize = true;
             lblTurnDisplay.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTurnDisplay.Location = new Point(622, 110);
+            lblTurnDisplay.Location = new Point(548, 110);
             lblTurnDisplay.Name = "lblTurnDisplay";
             lblTurnDisplay.Size = new Size(71, 21);
             lblTurnDisplay.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(695, 110);
+            btnSubmit.Location = new Point(625, 109);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(75, 23);
             btnSubmit.TabIndex = 3;
@@ -101,7 +101,7 @@
             // 
             txtPlayerInput.Location = new Point(88, 110);
             txtPlayerInput.Name = "txtPlayerInput";
-            txtPlayerInput.Size = new Size(524, 23);
+            txtPlayerInput.Size = new Size(437, 23);
             txtPlayerInput.TabIndex = 2;
             // 
             // gboxResults
@@ -109,7 +109,7 @@
             gboxResults.Controls.Add(listBoxResults);
             gboxResults.Location = new Point(12, 191);
             gboxResults.Name = "gboxResults";
-            gboxResults.Size = new Size(776, 263);
+            gboxResults.Size = new Size(706, 263);
             gboxResults.TabIndex = 4;
             gboxResults.TabStop = false;
             gboxResults.Text = "Results";
@@ -121,12 +121,12 @@
             listBoxResults.ItemHeight = 32;
             listBoxResults.Location = new Point(6, 22);
             listBoxResults.Name = "listBoxResults";
-            listBoxResults.Size = new Size(764, 228);
+            listBoxResults.Size = new Size(694, 228);
             listBoxResults.TabIndex = 4;
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(707, 162);
+            btnExit.Location = new Point(637, 162);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 23);
             btnExit.TabIndex = 5;
@@ -136,7 +136,7 @@
             // 
             // btnNewTurn
             // 
-            btnNewTurn.Location = new Point(626, 162);
+            btnNewTurn.Location = new Point(556, 162);
             btnNewTurn.Name = "btnNewTurn";
             btnNewTurn.Size = new Size(75, 23);
             btnNewTurn.TabIndex = 6;
@@ -156,7 +156,7 @@
             // 
             // btnReroll
             // 
-            btnReroll.Location = new Point(545, 162);
+            btnReroll.Location = new Point(475, 162);
             btnReroll.Name = "btnReroll";
             btnReroll.Size = new Size(75, 23);
             btnReroll.TabIndex = 8;
@@ -169,7 +169,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(793, 461);
+            ClientSize = new Size(729, 461);
             Controls.Add(btnReroll);
             Controls.Add(btnEndTurn);
             Controls.Add(btnNewTurn);
