@@ -9,3 +9,5 @@ Screenshot of main program window when game is starting:
 
 Screenshot of the game when all entries have been submitted, and the turn is over. Ready to be judged.
 ![Screenshot of finished game, ready to be judged.](https://imgur.com/Q3PJ97B.png)
+
+Virustotal link for executable in 1.0.0 release: https://www.virustotal.com/gui/file/086f341e980807983dd7eeaf1e0aa5aedf2106904c59fc922452ba6ac9251a56/detection
