@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using libAnnaC;
 
 namespace WTFdtsf_winUI
 {
@@ -9,22 +10,37 @@ namespace WTFdtsf_winUI
     {
         List<string> lstResults = new List<string>();
         List<string> asChar = new List<string>("ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().Select(c => c.ToString()).ToList());
+        List<string> WordList = new List<string>();
+        string AdjectiveFileName = "english_adjectives.txt";
+        string VerbFileName = "english_verbs.txt";
+        string NounFileName = "english_nouns.txt";
+        string DataDirectory = ".\\libAnna\\";
         int numPlayer = 1;
         int asLength;
+        int isWord;
+        int asLocation;
+        string asWord;
 
         public Form1()
         {
             InitializeComponent();
 
             Random random = new Random();
+
+            List<string> lstVerbs = new List<string>();
+            List<string> lstAdjectives = new List<string>();
+            List<string> lstNouns = new List<string>();
+            
             listBoxResults.Items.Clear();
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnNewTurn.Enabled = false;
 
-            asLength = WeightedRandomLength();
-            int asLocation = random.Next(0, asLength);
-            int isWord = random.Next(0, 2);
+            lstAdjectives = File.ReadAllLines(DataDirectory + AdjectiveFileName).ToList();
+            lstNouns = File.ReadAllLines(DataDirectory + NounFileName).ToList();
+            lstVerbs = File.ReadAllLines(DataDirectory + VerbFileName).ToList();
 
+            WordList = lstAdjectives.Concat(lstVerbs).Concat(lstNouns).ToList();
+            
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
         }
@@ -70,7 +86,8 @@ namespace WTFdtsf_winUI
             string tAcronymDisplay = string.Empty;
             for (int i = 0; i < nymLength; i++)
             {
-                tAcronymDisplay += asChar[random.Next(asChar.Count)] + " ";
+                if (isWord == 0) { tAcronymDisplay += asChar[random.Next(asChar.Count)] + " "; }
+                else { tAcronymDisplay += (i == asLocation ? char.ToUpper(asWord[0]) + asWord.Substring(1) : asChar[random.Next(asChar.Count)]) + " "; }
             }
             return tAcronymDisplay.Trim();
         }
@@ -79,8 +96,9 @@ namespace WTFdtsf_winUI
         {
             Random random = new Random();
             asLength = WeightedRandomLength();
-            int asLocation = random.Next(0, asLength);
-            int isWord = random.Next(0, 2);
+            asLocation = random.Next(0, asLength);
+            isWord = random.Next(0, 2);
+            asWord = WordList[random.Next(WordList.Count)];
         }
 
         private void Form1_Load(object sender, EventArgs e)
