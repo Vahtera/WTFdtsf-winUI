@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             groupBox2 = new GroupBox();
             label3 = new Label();
             lblAcronymDisplay = new Label();
@@ -176,6 +177,7 @@
             Controls.Add(btnExit);
             Controls.Add(gboxResults);
             Controls.Add(groupBox2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "WTF Does That Stand For?";
             Load += Form1_Load;

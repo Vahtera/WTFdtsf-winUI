@@ -7,7 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>WTFdtsf.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="WTFdtsf.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="libAnna\english_adjectives.txt">
