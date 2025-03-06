@@ -40,7 +40,8 @@ namespace WTFdtsf_winUI
             lstVerbs = File.ReadAllLines(DataDirectory + VerbFileName).ToList();
 
             WordList = lstAdjectives.Concat(lstVerbs).Concat(lstNouns).ToList();
-            
+            asWord = WordList[random.Next(WordList.Count)];
+
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
         }
