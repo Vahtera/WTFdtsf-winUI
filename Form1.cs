@@ -30,7 +30,7 @@ namespace WTFdtsf_winUI
             List<string> lstVerbs = new List<string>();
             List<string> lstAdjectives = new List<string>();
             List<string> lstNouns = new List<string>();
-            
+
             listBoxResults.Items.Clear();
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnNewTurn.Enabled = false;
@@ -154,6 +154,7 @@ namespace WTFdtsf_winUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (txtPlayerInput.Text == "") { return; }
             listBoxResults.Items.Add(txtPlayerInput.Text);
             txtPlayerInput.Text = string.Empty;
             numPlayer++;
@@ -165,6 +166,16 @@ namespace WTFdtsf_winUI
         {
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
+        }
+
+        private void txtPlayerInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPlayerInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSubmit_Click(sender, e); e.Handled = true; e.SuppressKeyPress = true; }
         }
     }
 }

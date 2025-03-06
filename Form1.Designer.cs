@@ -104,6 +104,8 @@
             txtPlayerInput.Name = "txtPlayerInput";
             txtPlayerInput.Size = new Size(437, 23);
             txtPlayerInput.TabIndex = 2;
+            txtPlayerInput.TextChanged += txtPlayerInput_TextChanged;
+            txtPlayerInput.KeyDown += txtPlayerInput_KeyDown;
             // 
             // gboxResults
             // 
