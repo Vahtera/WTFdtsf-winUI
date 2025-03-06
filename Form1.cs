@@ -25,6 +25,7 @@ namespace WTFdtsf_winUI
         {
             InitializeComponent();
 
+            btnEndTurn.Visible = false;
             Random random = new Random();
 
             List<string> lstVerbs = new List<string>();
@@ -112,6 +113,24 @@ namespace WTFdtsf_winUI
             Application.Exit();
         }
 
+        private void RandomizeListBox(ListBox lbox)
+        {
+            ListBox.ObjectCollection list = lbox.Items;
+            Random random = new Random();
+            int n = list.Count;
+            lbox.BeginUpdate();
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                object value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            lbox.EndUpdate();
+            lbox.Invalidate();
+        }
+
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
             Size = new Size(745, 500);
@@ -121,20 +140,7 @@ namespace WTFdtsf_winUI
             btnEndTurn.Enabled = false;
             btnNewTurn.Enabled = true;
 
-            ListBox.ObjectCollection list = listBoxResults.Items;
-            Random random = new Random();
-            int n = list.Count;
-            listBoxResults.BeginUpdate();
-            while (n > 1)
-            {
-                n--;
-                int k = random.Next(n + 1);
-                object value = list[k];
-                list[k] = list[n];
-                list[n] = value;
-            }
-            listBoxResults.EndUpdate();
-            listBoxResults.Invalidate();
+            RandomizeListBox(listBoxResults);
         }
 
         private void btnNewTurn_Click(object sender, EventArgs e)
@@ -148,6 +154,9 @@ namespace WTFdtsf_winUI
             btnEndTurn.Enabled = true;
             btnNewTurn.Enabled = false;
             btnReroll.Enabled = true;
+            btnReroll.Visible = true;
+            btnEndTurn.Visible = false;
+
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
         }
@@ -160,6 +169,8 @@ namespace WTFdtsf_winUI
             numPlayer++;
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnReroll.Enabled = false;
+            btnReroll.Visible = false;
+            btnEndTurn.Visible = true;
         }
 
         private void bteReroll_Click(object sender, EventArgs e)
