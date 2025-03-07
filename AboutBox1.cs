@@ -112,6 +112,7 @@ namespace WTFdtsf_winUI
         {
             labelVersion.Text = String.Format("Version 1.0 Build {0}", CommitInfo.CommitCount);
             labelCopyright.Text = "Copyright © 2025 Anna Vahtera";
+            labelCompanyName.Text = "Open Source, licensed under GPLv3";
         }
     }
 }

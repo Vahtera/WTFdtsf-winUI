@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,10 +17,15 @@ namespace WTFdtsf_winUI
         string VerbFileName = "english_verbs.txt";
         string NounFileName = "english_nouns.txt";
         string DataDirectory = ".\\libAnna\\";
+        string CustomWordListFileName;
         int numPlayer = 1;
         int asLength;
         int isWord;
         int asLocation;
+        int SizeBig = 515;
+        int SizeSmall = 245;
+        int SizeWide = 745;
+        int SizeSettings = 975;
         string asWord;
 
         public Form1()
@@ -29,23 +35,37 @@ namespace WTFdtsf_winUI
             btnEndTurn.Visible = false;
             Random random = new Random();
 
-            List<string> lstVerbs = new List<string>();
-            List<string> lstAdjectives = new List<string>();
-            List<string> lstNouns = new List<string>();
 
             listBoxResults.Items.Clear();
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnNewTurn.Enabled = false;
 
-            lstAdjectives = File.ReadAllLines(DataDirectory + AdjectiveFileName).ToList();
-            lstNouns = File.ReadAllLines(DataDirectory + NounFileName).ToList();
-            lstVerbs = File.ReadAllLines(DataDirectory + VerbFileName).ToList();
-
-            WordList = lstAdjectives.Concat(lstVerbs).Concat(lstNouns).ToList();
+            WordList = SetWordList(string.Empty);
             asWord = WordList[random.Next(WordList.Count)];
 
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
+        }
+
+        private List<string> SetWordList(string fileName)
+        {
+            List<string> lstVerbs = new List<string>();
+            List<string> lstAdjectives = new List<string>();
+            List<string> lstNouns = new List<string>();
+            List<string> lstCustom = new List<string>();
+
+            if (File.Exists(fileName))
+            {
+                lstCustom.Clear();
+                lstCustom = File.ReadAllLines(fileName).ToList();
+                return lstCustom;
+            }
+
+            lstAdjectives = File.ReadAllLines(DataDirectory + AdjectiveFileName).ToList();
+            lstNouns = File.ReadAllLines(DataDirectory + NounFileName).ToList();
+            lstVerbs = File.ReadAllLines(DataDirectory + VerbFileName).ToList();
+
+            return lstAdjectives.Concat(lstVerbs).Concat(lstNouns).ToList();
         }
 
         private static int WeightedRandomLength()
@@ -106,7 +126,7 @@ namespace WTFdtsf_winUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Size = new Size(745, 230);
+            Size = new Size(SizeWide, SizeSmall);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -134,7 +154,7 @@ namespace WTFdtsf_winUI
 
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
-            Size = new Size(745, 500);
+            Size = new Size(SizeWide, SizeBig);
             btnSubmit.Enabled = false;
             txtPlayerInput.Enabled = false;
             lblTurnDisplay.Text = "---";
@@ -146,7 +166,7 @@ namespace WTFdtsf_winUI
 
         private void btnNewTurn_Click(object sender, EventArgs e)
         {
-            Size = new Size(745, 230);
+            Size = new Size(SizeWide, SizeSmall);
             numPlayer = 1;
             lblTurnDisplay.Text = "Player " + numPlayer.ToString();
             btnSubmit.Enabled = true;
@@ -157,6 +177,7 @@ namespace WTFdtsf_winUI
             btnReroll.Enabled = true;
             btnReroll.Visible = true;
             btnEndTurn.Visible = false;
+            itmSettings.Enabled = true;
 
             Randomize();
             lblAcronymDisplay.Text = SetAcronymDisplay(asLength);
@@ -172,6 +193,7 @@ namespace WTFdtsf_winUI
             btnReroll.Enabled = false;
             btnReroll.Visible = false;
             btnEndTurn.Visible = true;
+            itmSettings.Enabled = false;
         }
 
         private void bteReroll_Click(object sender, EventArgs e)
@@ -194,6 +216,61 @@ namespace WTFdtsf_winUI
         {
             AboutBox1 box = new AboutBox1();
             box.ShowDialog();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Size = new Size(SizeSettings, SizeSmall);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 box = new AboutBox1();
+            box.ShowDialog();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Size = new Size(SizeWide, SizeSmall);
+        }
+
+        private void btnOpenWordList_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    String plainString = new FileInfo(openFileDialog1.FileName).ToString();
+                    lblCustomFileName.Text = Path.GetFileName(plainString);
+                    CustomWordListFileName = plainString;
+                }
+                catch
+                {
+                    MessageBox.Show("ERROR! Please check passphrase and do not attempt to edit cipher text");
+                }
+            }
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if (CustomWordListFileName != null)
+            {
+                WordList = SetWordList(CustomWordListFileName);
+            }
+            Size = new Size(SizeWide, SizeSmall);
+            bteReroll_Click(sender, e);
         }
     }
 }
