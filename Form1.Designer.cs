@@ -86,10 +86,13 @@
             // lblAcronymDisplay
             // 
             lblAcronymDisplay.BackColor = SystemColors.Control;
+            lblAcronymDisplay.BorderStyle = BorderStyle.FixedSingle;
+            lblAcronymDisplay.FlatStyle = FlatStyle.Flat;
             lblAcronymDisplay.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAcronymDisplay.Image = Properties.Resources._20250307_ac0c2d12209b81f1404a46ac95e2c5c9_original;
             lblAcronymDisplay.Location = new Point(6, 19);
             lblAcronymDisplay.Name = "lblAcronymDisplay";
-            lblAcronymDisplay.Size = new Size(694, 65);
+            lblAcronymDisplay.Size = new Size(694, 75);
             lblAcronymDisplay.TabIndex = 0;
             lblAcronymDisplay.Text = "A B C D E F ThisIsALongWord";
             lblAcronymDisplay.TextAlign = ContentAlignment.MiddleCenter;
