@@ -63,9 +63,9 @@ namespace WTFdtsf_winUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _20250307_ac0c2d12209b81f1404a46ac95e2c5c9_original {
+        internal static System.Drawing.Bitmap background {
             get {
-                object obj = ResourceManager.GetObject("20250307-ac0c2d12209b81f1404a46ac95e2c5c9-original", resourceCulture);
+                object obj = ResourceManager.GetObject("background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

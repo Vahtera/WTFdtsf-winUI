@@ -89,7 +89,8 @@
             lblAcronymDisplay.BorderStyle = BorderStyle.FixedSingle;
             lblAcronymDisplay.FlatStyle = FlatStyle.Flat;
             lblAcronymDisplay.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAcronymDisplay.Image = Properties.Resources._20250307_ac0c2d12209b81f1404a46ac95e2c5c9_original;
+            lblAcronymDisplay.Image = Properties.Resources.background;
+            lblAcronymDisplay.ImageAlign = ContentAlignment.BottomCenter;
             lblAcronymDisplay.Location = new Point(6, 19);
             lblAcronymDisplay.Name = "lblAcronymDisplay";
             lblAcronymDisplay.Size = new Size(694, 75);
